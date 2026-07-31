@@ -29,7 +29,5 @@ export const slides = [
   { photo: '/photos/15.jpg', text: 'How comfortable silence feels when it\u2019s with you.' },
   { photo: '/photos/16.jpg', text: 'The way your eyes give you away before your words do.' },
   { photo: '/photos/17.jpg', text: 'You make ordinary conversations feel like the best part of my day.' },
-  { photo: '/photos/18.jpg', text: 'How you turn my bad moods around without even trying.' },
-  { photo: '/photos/19.jpg', text: 'You\u2019re the kind of person I didn\u2019t know I was looking for.' },
-  { photo: '/photos/20.jpg', text: 'And honestly \u2014 I\u2019d choose you again, every single time.' },
+  { photo: '/photos/18.jpg', text: 'And honestly \u2014 I\u2019d choose you again, every single time.' },
 ]
