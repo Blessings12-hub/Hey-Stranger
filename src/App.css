@@ -1,0 +1,255 @@
+.stage {
+  position: relative;
+  height: 100dvh;
+  width: 100vw;
+  background: radial-gradient(120% 120% at 50% 0%, var(--plum) 0%, var(--ink) 45%, var(--ink-deep) 100%);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(12, 5, 9, 0.75) 100%);
+}
+
+.dust {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mote {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.35;
+  filter: blur(0.5px);
+  animation: drift linear infinite;
+}
+
+@keyframes drift {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.45;
+  }
+  90% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+/* ---------- Opener ---------- */
+
+.opener {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8vh 8vw;
+  gap: 1.1rem;
+}
+
+.opener-photo-ring {
+  width: clamp(140px, 38vw, 200px);
+  height: clamp(140px, 38vw, 200px);
+  border-radius: 50%;
+  padding: 6px;
+  background: conic-gradient(from 180deg, var(--gold), var(--blush), var(--gold));
+  margin-bottom: 1.5rem;
+}
+
+.opener-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  background: var(--plum);
+  border: 3px solid var(--ink-deep);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  color: var(--gold);
+  opacity: 0.9;
+}
+
+.opener-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(2.2rem, 9vw, 3.4rem);
+  margin: 0;
+  color: var(--cream);
+  line-height: 1.1;
+}
+
+.opener-subtitle {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--rose-muted);
+  margin: 0 0 1.5rem;
+}
+
+.begin-btn {
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  padding: 0.85rem 2.2rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.begin-btn:hover {
+  background: var(--gold);
+  color: var(--ink-deep);
+}
+
+/* ---------- Card ---------- */
+
+.card-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.card-photo-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: linear-gradient(160deg, var(--plum), var(--ink-deep));
+}
+
+.card-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 6, 10, 0.92) 0%, rgba(15, 6, 10, 0.35) 42%, rgba(15, 6, 10, 0.05) 65%);
+}
+
+.card-text-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  padding: 0 7vw 9vh;
+}
+
+.card-index {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  opacity: 0.85;
+  margin-bottom: 0.6rem;
+}
+
+.card-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 6.4vw, 2.4rem);
+  line-height: 1.28;
+  color: var(--cream);
+  margin: 0;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- Chrome: progress thread, sound toggle, nav zones ---------- */
+
+.thread {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  display: flex;
+  gap: 4px;
+  padding: 14px 10px 0;
+}
+
+.thread-seg {
+  flex: 1;
+  height: 2px;
+  background: rgba(245, 233, 220, 0.22);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.thread-fill {
+  height: 100%;
+  background: var(--gold);
+  transition: width 0.25s ease;
+}
+
+.sound-toggle {
+  position: absolute;
+  top: 22px;
+  right: 16px;
+  z-index: 7;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 233, 220, 0.35);
+  background: rgba(15, 6, 10, 0.4);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  backdrop-filter: blur(6px);
+}
+
+.nav-zones {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+}
+
+.nav-zone {
+  flex: 1;
+  background: transparent;
+  border: none;
+}
+
+.hint {
+  position: absolute;
+  bottom: 3vh;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  text-align: center;
+  font-size: 0.65rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(245, 233, 220, 0.5);
+  pointer-events: none;
+}

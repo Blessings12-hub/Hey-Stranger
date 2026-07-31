@@ -1,0 +1,52 @@
+:root {
+  --ink: #2b1420;
+  --ink-deep: #1c0d15;
+  --plum: #3d1f2e;
+  --blush: #e8b4b8;
+  --gold: #d4af7a;
+  --cream: #f5e9dc;
+  --rose-muted: #a8677a;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Jost', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--ink-deep);
+  color: var(--cream);
+  font-family: var(--font-body);
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
