@@ -1,21 +1,19 @@
-This zip only contains the files that changed. Drop these into your existing
-repo, overwriting the old ones, then do the following cleanup:
+Changed files only:
 
-1. public/photos/ now has 0.jpg through 18.jpg (renamed, in alphabetical
-   order of your original filenames — I had no way to know which order you
-   actually wanted, so double check 0.jpg is the one you want on the opener
-   and reorder/rename any you'd like swapped).
-   -> Delete the old randomly-named .jpeg files from public/photos/ in your
-      repo, they're replaced by these.
+1. public/photos/19.jpg — the new photo, added as the 19th and final slide.
 
-2. src/data/slides.js — trimmed to 18 entries to match your 18 photos
-   (you uploaded 19 images total: 1 for the opener + 18 for cards).
+2. src/data/slides.js — added the new finale entry (long paragraph) pointing
+   at 19.jpg.
 
-3. src/App.jsx — the "Begin" tap now also retries playback on your very
-   next tap anywhere if the browser blocks it the first time. This is the
-   most reliable autoplay behavior the web allows; no browser lets audio
-   with sound start with zero user interaction.
+3. src/App.jsx + src/App.css:
+   - Opener (the "hey stranger" screen) is now a full-bleed background photo
+     using 0.jpg, with a soft scrim so the text stays readable, instead of
+     the small circular photo it was before.
+   - Added a "magic" layer on the opener: small gold sparkles that twinkle
+     in and out at random spots over the photo.
+   - The finale paragraph slide automatically switches to a smaller,
+     upright font and scrolls if it runs long, so the long paragraph
+     doesn't get cut off or overflow the screen.
 
-4. README.md — updated card count (18, not 20).
-
-Your those-eyes.mp3 is unchanged and not included here since it didn't change.
+Nothing else changed — your other photos (0.jpg–18.jpg) and the song are
+untouched.
