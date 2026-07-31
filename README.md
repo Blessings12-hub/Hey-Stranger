@@ -5,7 +5,7 @@ A private, swipeable love-letter postcard. Vite + React, deployable on Vercel.
 ## What's in it
 
 - Opening "hey stranger" slide with her photo and a **Begin** button.
-- 20 full-bleed photo cards, each with a line of text underneath.
+- 18 full-bleed photo cards, each with a line of text underneath.
 - Swipe (mobile), tap left/right, or arrow keys to move between cards.
 - Background music, mutable with the button top-right.
 - Thin gold progress thread at the top.
@@ -14,7 +14,7 @@ A private, swipeable love-letter postcard. Vite + React, deployable on Vercel.
 
 **Photos** — put your images in `public/photos/`, named to match:
 - `0.jpg` — her photo on the opening slide
-- `1.jpg` through `20.jpg` — one per card
+- `1.jpg` through `18.jpg` — one per card
 
 **Text** — open `src/data/slides.js` and edit the `text` for each slide to the
 real reasons. It's plain text in quotes, safe to edit straight in GitHub's
