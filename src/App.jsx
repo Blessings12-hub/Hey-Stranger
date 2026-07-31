@@ -52,13 +52,20 @@ export default function App() {
   const begin = async () => {
     setStarted(true)
     const audio = audioRef.current
-    if (audio) {
-      try {
-        await audio.play()
-      } catch (e) {
-        // Autoplay can still be blocked on some browsers; the sound
-        // toggle lets them start it manually.
+    if (!audio) return
+    try {
+      audio.currentTime = 0
+      audio.volume = 1
+      await audio.play()
+    } catch (e) {
+      // Some mobile browsers still refuse here even after a tap. Fall back
+      // to starting playback on the very next touch/click anywhere on the
+      // page, which is always allowed since it's a fresh user gesture.
+      const retry = () => {
+        audio.play().catch(() => {})
+        window.removeEventListener('pointerdown', retry)
       }
+      window.addEventListener('pointerdown', retry, { once: true })
     }
   }
 
@@ -100,7 +107,7 @@ export default function App() {
       <Motes />
       <div className="vignette" />
 
-      <audio ref={audioRef} src="/audio/those-eyes.mp3" loop muted={muted} />
+      <audio ref={audioRef} src="/audio/those-eyes.mp3" loop muted={muted} preload="auto" />
 
       {!started && (
         <div className="opener">
