@@ -1,19 +1,14 @@
-Changed files only:
+Changed files only: src/App.jsx and src/App.css
 
-1. public/photos/19.jpg — the new photo, added as the 19th and final slide.
+- The finale paragraph slide now sits over a much darker overlay (78% dark)
+  instead of the light gradient the other cards use, so the photo's
+  brightness doesn't fight with the text.
+- The text area for that slide now spans nearly the full screen height
+  (with a soft fade at the very top/bottom edges) instead of being squeezed
+  into the bottom third, so the whole paragraph fits and is readable.
+- If it's still too long for one screen on a given phone, it now scrolls
+  smoothly inside that area, and scrolling won't accidentally trigger the
+  next/previous slide swipe anymore.
 
-2. src/data/slides.js — added the new finale entry (long paragraph) pointing
-   at 19.jpg.
-
-3. src/App.jsx + src/App.css:
-   - Opener (the "hey stranger" screen) is now a full-bleed background photo
-     using 0.jpg, with a soft scrim so the text stays readable, instead of
-     the small circular photo it was before.
-   - Added a "magic" layer on the opener: small gold sparkles that twinkle
-     in and out at random spots over the photo.
-   - The finale paragraph slide automatically switches to a smaller,
-     upright font and scrolls if it runs long, so the long paragraph
-     doesn't get cut off or overflow the screen.
-
-Nothing else changed — your other photos (0.jpg–18.jpg) and the song are
-untouched.
+Only affects the long finale slide — your other 19 cards look the same as
+before.
