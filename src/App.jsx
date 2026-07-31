@@ -37,6 +37,42 @@ function Motes() {
   )
 }
 
+const SPARKLE_COUNT = 11
+
+function Sparkles() {
+  const sparkles = useMemo(
+    () =>
+      Array.from({ length: SPARKLE_COUNT }).map((_, i) => ({
+        id: i,
+        top: 6 + Math.random() * 58,
+        left: 5 + Math.random() * 90,
+        size: 10 + Math.random() * 16,
+        delay: Math.random() * 4,
+        duration: 2.2 + Math.random() * 2.4,
+      })),
+    []
+  )
+  return (
+    <div className="sparkles" aria-hidden="true">
+      {sparkles.map((s) => (
+        <span
+          key={s.id}
+          className="sparkle"
+          style={{
+            top: `${s.top}%`,
+            left: `${s.left}%`,
+            fontSize: s.size,
+            animationDelay: `${s.delay}s`,
+            animationDuration: `${s.duration}s`,
+          }}
+        >
+          {'\u2726'}
+        </span>
+      ))}
+    </div>
+  )
+}
+
 export default function App() {
   const [started, setStarted] = useState(false)
   const [index, setIndex] = useState(0)
@@ -101,6 +137,7 @@ export default function App() {
   }
 
   const current = slides[index]
+  const isLongText = current.text.length > 200
 
   return (
     <div className="stage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
@@ -111,15 +148,17 @@ export default function App() {
 
       {!started && (
         <div className="opener">
-          <div className="eyebrow">for you</div>
-          <div className="opener-photo-ring">
-            <img className="opener-photo" src={opener.photo} alt="" />
+          <img className="opener-bg" src={opener.photo} alt="" />
+          <div className="opener-scrim" />
+          <Sparkles />
+          <div className="opener-content">
+            <div className="eyebrow">{opener.eyebrow}</div>
+            <h1 className="opener-title">{opener.title}</h1>
+            <p className="opener-subtitle">{opener.subtitle}</p>
+            <button className="begin-btn" onClick={begin}>
+              Begin
+            </button>
           </div>
-          <h1 className="opener-title">{opener.title}</h1>
-          <p className="opener-subtitle">{opener.subtitle}</p>
-          <button className="begin-btn" onClick={begin}>
-            Begin
-          </button>
         </div>
       )}
 
@@ -153,7 +192,7 @@ export default function App() {
                 <img className="card-photo" src={current.photo} alt="" />
                 <div className="card-scrim" />
               </div>
-              <div className="card-text-wrap">
+              <div className={`card-text-wrap${isLongText ? ' card-text-wrap--long' : ''}`}>
                 <div className="card-index">
                   {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
                 </div>
