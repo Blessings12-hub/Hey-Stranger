@@ -190,9 +190,13 @@ export default function App() {
             >
               <div className="card-photo-wrap">
                 <img className="card-photo" src={current.photo} alt="" />
-                <div className="card-scrim" />
+                <div className={`card-scrim${isLongText ? ' card-scrim--long' : ''}`} />
               </div>
-              <div className={`card-text-wrap${isLongText ? ' card-text-wrap--long' : ''}`}>
+              <div
+                className={`card-text-wrap${isLongText ? ' card-text-wrap--long' : ''}`}
+                onTouchStart={isLongText ? (e) => e.stopPropagation() : undefined}
+                onTouchEnd={isLongText ? (e) => e.stopPropagation() : undefined}
+              >
                 <div className="card-index">
                   {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
                 </div>

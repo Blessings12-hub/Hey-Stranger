@@ -191,6 +191,10 @@
   background: linear-gradient(to top, rgba(15, 6, 10, 0.92) 0%, rgba(15, 6, 10, 0.35) 42%, rgba(15, 6, 10, 0.05) 65%);
 }
 
+.card-scrim--long {
+  background: rgba(9, 4, 6, 0.78);
+}
+
 .card-text-wrap {
   position: absolute;
   left: 0;
@@ -221,16 +225,19 @@
 }
 
 .card-text-wrap--long {
-  max-height: 72vh;
+  top: 9vh;
+  bottom: 9vh;
+  padding: 0 7vw;
+  display: flex;
+  align-items: center;
   overflow-y: auto;
-  padding-top: 4vh;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 6vh);
-  mask-image: linear-gradient(to bottom, transparent 0, black 6vh);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 4vh, black calc(100% - 4vh), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, black 4vh, black calc(100% - 4vh), transparent 100%);
 }
 
 .card-text-wrap--long .card-text {
-  font-size: clamp(1.05rem, 4.4vw, 1.5rem);
-  line-height: 1.55;
+  font-size: clamp(1rem, 4vw, 1.35rem);
+  line-height: 1.6;
   font-style: normal;
   font-weight: 400;
 }
